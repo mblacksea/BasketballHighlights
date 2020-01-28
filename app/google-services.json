@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "964498696221",
+    "firebase_url": "https://basketballhighlights-25ceb.firebaseio.com",
+    "project_id": "basketballhighlights-25ceb",
+    "storage_bucket": "basketballhighlights-25ceb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964498696221:android:c281af55de743b54fc7ef4",
+        "android_client_info": {
+          "package_name": "com.oxygenmobile.basketballhighlights"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "964498696221-c2nrskohir5a7tc99urov4v4uaglevop.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.oxygenmobile.basketballhighlights",
+            "certificate_hash": "9baee94697fd275aa0a62f212dbe94ac9b58fc61"
+          }
+        },
+        {
+          "client_id": "964498696221-3pr4p5chsgrofrjffld530nvg92j74u6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb7oyM3q5Z825PTIlnJd-fFxBxLtmzK9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "964498696221-3pr4p5chsgrofrjffld530nvg92j74u6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
