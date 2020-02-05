@@ -13,30 +13,20 @@ import com.oxygenmobile.basketballhighlights.R;
 import com.oxygenmobile.basketballhighlights.model.BasketballHighlights;
 import com.rbddevs.splashy.Splashy;
 
+import android.content.Intent;
+
+import com.oxygenmobile.basketballhighlights.MainActivity;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        //initialSplash();
 
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference ref = database.getReference("basketballHighlights");
+        initialSplash();
 
-        // Attach a listener to read the data at our posts reference
-        ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                BasketballHighlights model = dataSnapshot.getValue(BasketballHighlights.class);
-                System.out.println(model.getPlayListApi() + model.getPlayListVideo() + model.getTopPlayList());
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
+        navigateToMainActivity();
 
     }
 
@@ -44,6 +34,13 @@ public class SplashActivity extends AppCompatActivity {
         Splashy splashy = new Splashy(this);
         splashy.setTitle("Splashy");
         splashy.setLogo(R.mipmap.ic_launcher);
+        splashy.setTime(3000);
         splashy.show();
+    }
+
+    private void navigateToMainActivity() {
+        Intent toMainActivity = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(toMainActivity);
+        finish();
     }
 }
