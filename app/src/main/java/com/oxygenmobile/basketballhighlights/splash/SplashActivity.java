@@ -2,7 +2,6 @@ package com.oxygenmobile.basketballhighlights.splash;
 
 import androidx.annotation.NonNull;
 
-import android.os.Bundle;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.google.firebase.database.DataSnapshot;
@@ -10,15 +9,18 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.onurkaganaldemir.ktoastlib.KToast;
 import com.oxygenmobile.basketballhighlights.R;
 import com.oxygenmobile.basketballhighlights.model.BasketballHighlights;
 import com.oxygenmobile.basketballhighlights.session.GlobalVariables;
 
 import android.content.Intent;
 import android.util.Log;
+import android.view.Gravity;
 
 import com.oxygenmobile.basketballhighlights.MainActivity;
 import com.oxygenmobile.basketballhighlights.utils.Constants;
+import com.oxygenmobile.basketballhighlights.utils.SessionOperation;
 import com.viksaa.sssplash.lib.activity.AwesomeSplash;
 import com.viksaa.sssplash.lib.cnst.Flags;
 import com.viksaa.sssplash.lib.model.ConfigSplash;
@@ -27,17 +29,6 @@ import com.viksaa.sssplash.lib.model.ConfigSplash;
 public class SplashActivity extends AwesomeSplash {
 
     private final static String TAG = "SplashActivity";
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-
-//        initialSplash();
-
-        navigateToMainActivity();
-
-    }
 
     @Override
     public void initSplash(ConfigSplash configSplash) {
@@ -88,16 +79,15 @@ public class SplashActivity extends AwesomeSplash {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final BasketballHighlights basketballHighlightsUrl = dataSnapshot.getValue(BasketballHighlights.class);
-                ((GlobalVariables) getApplicationContext()).setBasketballHighlightsUrl(basketballHighlightsUrl);
-
+                SessionOperation.saveFirabaseUrl(getApplicationContext(), basketballHighlightsUrl);
                 navigateToMainActivity();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.e(TAG, "The read data failed from Firebase" + databaseError.getCode() + " " + databaseError.getMessage() + " " + databaseError.getDetails());
-                //TODO
-                //Toast message find awesome library!
+                KToast.warningToast(SplashActivity.this, getString(R.string.toast_firebase_error), Gravity.BOTTOM, KToast.LENGTH_AUTO);
+
             }
         });
     }

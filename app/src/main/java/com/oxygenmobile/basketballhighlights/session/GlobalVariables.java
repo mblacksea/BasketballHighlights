@@ -15,4 +15,6 @@ public class GlobalVariables extends Application {
     public void setBasketballHighlightsUrl(BasketballHighlights basketballHighlightsUrl) {
         this.basketballHighlightsUrl = basketballHighlightsUrl;
     }
+
+
 }
