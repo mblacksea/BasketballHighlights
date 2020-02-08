@@ -3,4 +3,10 @@
 
     <!--Toast Message-->
     <string name="toast_firebase_error">Please try again!</string>
+
+
+    <!--Button Text-->
+    <string name="highlightsPlays">NBA Highlights</string>
+    <string name="topTenPlays">NBA Top 10 Plays</string>
+
 </resources>

@@ -11,8 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.onurkaganaldemir.ktoastlib.KToast;
 import com.oxygenmobile.basketballhighlights.R;
-import com.oxygenmobile.basketballhighlights.model.BasketballHighlights;
-import com.oxygenmobile.basketballhighlights.session.GlobalVariables;
+import com.oxygenmobile.basketballhighlights.model.BasketballHighlightsUrl;
 
 import android.content.Intent;
 import android.util.Log;
@@ -78,7 +77,7 @@ public class SplashActivity extends AwesomeSplash {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                final BasketballHighlights basketballHighlightsUrl = dataSnapshot.getValue(BasketballHighlights.class);
+                final BasketballHighlightsUrl basketballHighlightsUrl = dataSnapshot.getValue(BasketballHighlightsUrl.class);
                 SessionOperation.saveFirabaseUrl(getApplicationContext(), basketballHighlightsUrl);
                 navigateToMainActivity();
             }

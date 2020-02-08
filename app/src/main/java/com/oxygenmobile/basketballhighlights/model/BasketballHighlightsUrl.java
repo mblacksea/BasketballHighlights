@@ -1,15 +1,15 @@
 package com.oxygenmobile.basketballhighlights.model;
 
-public class BasketballHighlights {
+public class BasketballHighlightsUrl {
 
     private String playListApi;
     private String playListVideo;
     private String topPlayList;
 
-    public BasketballHighlights() {
+    public BasketballHighlightsUrl() {
     }
 
-    public BasketballHighlights(String playListApi, String playListVideo, String topPlayList) {
+    public BasketballHighlightsUrl(String playListApi, String playListVideo, String topPlayList) {
         this.playListApi = playListApi;
         this.playListVideo = playListVideo;
         this.topPlayList = topPlayList;
