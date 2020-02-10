@@ -3,6 +3,8 @@
 
     <!--Toast Message-->
     <string name="toast_firebase_error">Please try again!</string>
+    <string name="toast_PlayListAPI_error">Error an occurred! Play List cannot be obtain!</string>
+    <string name="toast_Top10PlaysAPI_error">Error an occurred! Top 10 Play List cannot be obtain!</string>
 
 
     <!--Button Text-->

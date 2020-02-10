@@ -13,7 +13,6 @@ import com.oxygenmobile.basketballhighlights.adapter.HighlightsAdapter;
 import com.oxygenmobile.basketballhighlights.model.BasketballHighlightsUrl;
 import com.oxygenmobile.basketballhighlights.model.Item;
 import com.oxygenmobile.basketballhighlights.model.PlayListAPI;
-import com.oxygenmobile.basketballhighlights.model.HighlightsListItem;
 import com.oxygenmobile.basketballhighlights.retrofit.APIClient;
 import com.oxygenmobile.basketballhighlights.retrofit.APIInterface;
 import com.oxygenmobile.basketballhighlights.utils.SessionOperation;
@@ -36,18 +35,17 @@ public class HighlightsActivity extends AppCompatActivity {
 
         this.fetchHightlightsItemsForRecyclerView(playListApi);
 
-
     }
 
     private void fetchHightlightsItemsForRecyclerView(String playListApi) {
         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
 
-        Call<PlayListAPI> exampleCall = apiInterface.inquireNbaHighlightsPlatList(playListApi);
-        exampleCall.enqueue(new Callback<PlayListAPI>() {
+        Call<PlayListAPI> playListCall = apiInterface.inquireNbaHighlightsPlayList(playListApi);
+        playListCall.enqueue(new Callback<PlayListAPI>() {
             @Override
             public void onResponse(Call<PlayListAPI> call, Response<PlayListAPI> response) {
-                PlayListAPI body = response.body();
-                List<Item> items = body.getItems();
+                final PlayListAPI body = response.body();
+                final List<Item> items = body.getItems();
 
                 generateRecyclerViewPlayList(items);
 
@@ -55,8 +53,7 @@ public class HighlightsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<PlayListAPI> call, Throwable t) {
-                KToast.errorToast(HighlightsActivity.this, "hata oluştu!", Gravity.BOTTOM, KToast.LENGTH_AUTO);
-
+                KToast.errorToast(HighlightsActivity.this, getString(R.string.toast_PlayListAPI_error), Gravity.BOTTOM, KToast.LENGTH_AUTO);
             }
         });
 

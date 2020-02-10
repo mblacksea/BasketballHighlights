@@ -37,7 +37,7 @@ public class HighlightsAdapter extends RecyclerView.Adapter<HighlightsAdapter.Da
     }
 
     static class DataObjectHolder extends RecyclerView.ViewHolder {
-        ImageView playListImageView;
+        private ImageView playListImageView;
 
         DataObjectHolder(View itemView) {
             super(itemView);
