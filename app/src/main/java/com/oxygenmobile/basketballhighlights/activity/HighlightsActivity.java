@@ -38,9 +38,9 @@ public class HighlightsActivity extends AppCompatActivity {
     }
 
     private void fetchHightlightsItemsForRecyclerView(String playListApi) {
-        APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
+        final APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
 
-        Call<PlayListAPI> playListCall = apiInterface.inquireNbaHighlightsPlayList(playListApi);
+        final Call<PlayListAPI> playListCall = apiInterface.inquireNbaAllHighlightsPlayList(playListApi);
         playListCall.enqueue(new Callback<PlayListAPI>() {
             @Override
             public void onResponse(Call<PlayListAPI> call, Response<PlayListAPI> response) {

@@ -27,6 +27,10 @@ public class Top10PlaysAdapter extends RecyclerView.Adapter<Top10PlaysAdapter.Da
         this.mDataset = mDataset;
     }
 
+    private Context getContext() {
+        return context;
+    }
+
     static class DataObjectHolder extends RecyclerView.ViewHolder {
         private ImageView top10PlaysImageView;
         private TextView top10PlaysTitleTextView;

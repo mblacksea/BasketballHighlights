@@ -11,10 +11,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.oxygenmobile.basketballhighlights.R;
+import com.oxygenmobile.basketballhighlights.model.BasketballHighlightsUrl;
 import com.oxygenmobile.basketballhighlights.model.Item;
+import com.oxygenmobile.basketballhighlights.model.PlayListAPI;
+import com.oxygenmobile.basketballhighlights.retrofit.APIClient;
+import com.oxygenmobile.basketballhighlights.retrofit.APIInterface;
+import com.oxygenmobile.basketballhighlights.utils.SessionOperation;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class HighlightsAdapter extends RecyclerView.Adapter<HighlightsAdapter.DataObjectHolder> {
@@ -23,7 +32,12 @@ public class HighlightsAdapter extends RecyclerView.Adapter<HighlightsAdapter.Da
     private Context context;
     private List<Item> mDataset;
 
-    public Context getContext() {
+    public HighlightsAdapter(List<Item> mDataset, Context context) {
+        this.mDataset = mDataset;
+        this.context = context;
+    }
+
+    private Context getContext() {
         return context;
     }
 
@@ -31,10 +45,6 @@ public class HighlightsAdapter extends RecyclerView.Adapter<HighlightsAdapter.Da
         this.context = context;
     }
 
-    public HighlightsAdapter(List<Item> mDataset, Context context) {
-        this.mDataset = mDataset;
-        this.context = context;
-    }
 
     static class DataObjectHolder extends RecyclerView.ViewHolder {
         private ImageView playListImageView;
@@ -54,18 +64,28 @@ public class HighlightsAdapter extends RecyclerView.Adapter<HighlightsAdapter.Da
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, final int position) {
-        //holder.imageView.setText(mDataset.get(position).getSnippet().getTitle());
         Picasso.get()
                 .load(mDataset.get(position).getSnippet().getThumbnails().getHigh().getUrl())
                 .fit()
                 .into(holder.playListImageView);
 
         holder.playListImageView.setOnClickListener(view -> {
-            //TODO tıklandıktan sonra yapılacaklar!
-            Log.e(TAG, mDataset.get(position).getId());
-           /* Intent intent = new Intent(context, PlayListItemsActivity.class);
-            intent.putExtra("PlayListID", position);
-            context.startActivity(intent);*/
+            final BasketballHighlightsUrl basketballHighlightsUrl = SessionOperation.fetchFirebaseUrl(getContext());
+            final String playListVideoUrl = basketballHighlightsUrl.getPlayListVideo();
+
+            final APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
+            final Call<PlayListAPI> playListVideoCall = apiInterface.inquireNbaHighlightsPlayListById(playListVideoUrl, mDataset.get(position).getId());
+            playListVideoCall.enqueue(new Callback<PlayListAPI>() {
+                @Override
+                public void onResponse(Call<PlayListAPI> call, Response<PlayListAPI> response) {
+                    Log.e(TAG, String.valueOf(response.code()));
+                }
+
+                @Override
+                public void onFailure(Call<PlayListAPI> call, Throwable t) {
+                    Log.e(TAG, "Error an occurred" + t.getMessage() + " " + t.getLocalizedMessage());
+                }
+            });
         });
     }
 
