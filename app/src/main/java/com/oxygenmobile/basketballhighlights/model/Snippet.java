@@ -27,6 +27,9 @@ public class Snippet {
     @SerializedName("localized")
     @Expose
     private Localized localized;
+    @SerializedName("resourceId")
+    @Expose
+    private ResourceId resourceId;
 
     public String getPublishedAt() {
         return publishedAt;
