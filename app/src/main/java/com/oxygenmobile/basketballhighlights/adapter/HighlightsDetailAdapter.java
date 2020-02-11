@@ -21,6 +21,11 @@ public class HighlightsDetailAdapter extends RecyclerView.Adapter<HighlightsDeta
     private Context context;
     private List<Item> mDataset;
 
+    public HighlightsDetailAdapter(Context context, List<Item> mDataset) {
+        this.context = context;
+        this.mDataset = mDataset;
+    }
+
     static class DataObjectHolder extends RecyclerView.ViewHolder {
         private ImageView playListDetailImageView;
 
@@ -59,6 +64,10 @@ public class HighlightsDetailAdapter extends RecyclerView.Adapter<HighlightsDeta
                 .load(mDataset.get(position).getSnippet().getThumbnails().getHigh().getUrl())
                 .fit()
                 .into(holder.playListDetailImageView);
+
+        holder.itemView.setOnClickListener(v -> {
+           //TODO videoId alınmalı. Sonrasında youtubeActivity çağırılacak.
+        });
     }
 
     @Override

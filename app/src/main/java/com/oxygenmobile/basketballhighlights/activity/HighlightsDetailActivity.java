@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import com.oxygenmobile.basketballhighlights.R;
 import com.oxygenmobile.basketballhighlights.adapter.HighlightsAdapter;
+import com.oxygenmobile.basketballhighlights.adapter.HighlightsDetailAdapter;
 import com.oxygenmobile.basketballhighlights.model.Item;
 import com.oxygenmobile.basketballhighlights.model.PlayListAPI;
 
@@ -36,7 +37,7 @@ public class HighlightsDetailActivity extends AppCompatActivity {
         final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        final HighlightsAdapter highlightsAdapter = new HighlightsAdapter(getApplicationContext(), items);
+        final HighlightsDetailAdapter highlightsAdapter = new HighlightsDetailAdapter(getApplicationContext(), items);
         recyclerView.setAdapter(highlightsAdapter);
     }
 }
