@@ -1,11 +1,12 @@
 
 package com.oxygenmobile.basketballhighlights.model;
 
+import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class PlayListAPI {
+public class PlayListAPI implements Serializable {
 
     @SerializedName("kind")
     @Expose

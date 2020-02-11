@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+        <activity android:name=".activity.HighlightsDetailActivity"></activity>
         <activity android:name=".activity.Top10PlaysActivity" />
         <activity android:name=".activity.HighlightsActivity" />
         <activity android:name=".MainActivity" />

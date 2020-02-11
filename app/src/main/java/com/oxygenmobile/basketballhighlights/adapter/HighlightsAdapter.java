@@ -1,6 +1,8 @@
 package com.oxygenmobile.basketballhighlights.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.oxygenmobile.basketballhighlights.R;
+import com.oxygenmobile.basketballhighlights.activity.HighlightsDetailActivity;
 import com.oxygenmobile.basketballhighlights.model.BasketballHighlightsUrl;
 import com.oxygenmobile.basketballhighlights.model.Item;
 import com.oxygenmobile.basketballhighlights.model.PlayListAPI;
@@ -78,12 +81,12 @@ public class HighlightsAdapter extends RecyclerView.Adapter<HighlightsAdapter.Da
             playListVideoCall.enqueue(new Callback<PlayListAPI>() {
                 @Override
                 public void onResponse(Call<PlayListAPI> call, Response<PlayListAPI> response) {
-                    Log.e(TAG, String.valueOf(response.code()));
+                    navigateToHighlightsDetail(response);
                 }
 
                 @Override
                 public void onFailure(Call<PlayListAPI> call, Throwable t) {
-                    Log.e(TAG, "Error an occurred" + t.getMessage() + " " + t.getLocalizedMessage());
+                    Log.e(TAG, getContext().getString(R.string.toast_PlayListAPI_error) + t.getMessage() + " " + t.getLocalizedMessage());
                 }
             });
         });
@@ -93,5 +96,12 @@ public class HighlightsAdapter extends RecyclerView.Adapter<HighlightsAdapter.Da
     public int getItemCount() {
         return mDataset.size();
     }
+
+    private void navigateToHighlightsDetail(Response<PlayListAPI> response) {
+        Intent toHighlightsDetail = new Intent(getContext(), HighlightsDetailActivity.class);
+        toHighlightsDetail.putExtra(getContext().getString(R.string.intentHighlightsDetail), response.body());
+        getContext().startActivity(toHighlightsDetail);
+    }
+
 
 }

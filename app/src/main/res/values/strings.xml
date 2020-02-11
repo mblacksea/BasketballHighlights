@@ -11,4 +11,7 @@
     <string name="highlightsPlays">NBA Highlights</string>
     <string name="topTenPlays">NBA Top 10 Plays</string>
 
+    <!-- Intent Keywords-->
+    <string name="intentHighlightsDetail">highlightsDetail</string>
+
 </resources>
