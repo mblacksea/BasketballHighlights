@@ -11,7 +11,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.oxygenmobile.basketballhighlights"
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -49,13 +49,11 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     //Picasso library.
     implementation 'com.squareup.picasso:picasso:2.71828'
-
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.5.3'
-    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.5.3'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.5.3'
-
+    //Retrofit implementation.
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:converter-gson:2.2.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    //ProgressBar library.
+    implementation 'com.aseem.versatileprogressbar:MultiProgressBar:1.1.0'
 
 }

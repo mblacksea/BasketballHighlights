@@ -10,6 +10,7 @@ import android.view.Gravity;
 import com.onurkaganaldemir.ktoastlib.KToast;
 import com.oxygenmobile.basketballhighlights.R;
 import com.oxygenmobile.basketballhighlights.adapter.HighlightsAdapter;
+import com.oxygenmobile.basketballhighlights.adapter.Top10PlaysAdapter;
 import com.oxygenmobile.basketballhighlights.model.BasketballHighlightsUrl;
 import com.oxygenmobile.basketballhighlights.model.Item;
 import com.oxygenmobile.basketballhighlights.model.PlayListAPI;
@@ -65,7 +66,7 @@ public class Top10PlaysActivity extends AppCompatActivity {
         final RecyclerView.LayoutManager layoutManager = new StaggeredGridLayoutManager(2, 1);
         recyclerView.setLayoutManager(layoutManager);
 
-        final HighlightsAdapter highlightsAdapter = new HighlightsAdapter(items, getApplicationContext());
-        recyclerView.setAdapter(highlightsAdapter);
+        final Top10PlaysAdapter top10PlaysAdapter = new Top10PlaysAdapter(getApplicationContext(), items);
+        recyclerView.setAdapter(top10PlaysAdapter);
     }
 }

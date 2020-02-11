@@ -32,7 +32,7 @@ public class HighlightsAdapter extends RecyclerView.Adapter<HighlightsAdapter.Da
     private Context context;
     private List<Item> mDataset;
 
-    public HighlightsAdapter(List<Item> mDataset, Context context) {
+    public HighlightsAdapter(Context context, List<Item> mDataset) {
         this.mDataset = mDataset;
         this.context = context;
     }

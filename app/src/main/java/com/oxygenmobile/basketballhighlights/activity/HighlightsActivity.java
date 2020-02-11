@@ -66,7 +66,7 @@ public class HighlightsActivity extends AppCompatActivity {
         final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
 
-        final HighlightsAdapter highlightsAdapter = new HighlightsAdapter(items, getApplicationContext());
+        final HighlightsAdapter highlightsAdapter = new HighlightsAdapter(getApplicationContext(), items);
         recyclerView.setAdapter(highlightsAdapter);
     }
 }
