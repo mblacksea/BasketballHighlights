@@ -13,5 +13,6 @@
 
     <!-- Intent Keywords-->
     <string name="intentHighlightsDetail">highlightsDetail</string>
+    <string name="intentYoutubeDisplayVideoId">youtubeDisplayVideoId</string>
 
 </resources>
