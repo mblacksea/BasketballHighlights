@@ -55,7 +55,8 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     //ProgressBar library.
     implementation 'com.aseem.versatileprogressbar:MultiProgressBar:1.1.0'
-  
+
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
+
 }
 
-compile files('libs/YouTubeAndroidPlayerApi.jar')
