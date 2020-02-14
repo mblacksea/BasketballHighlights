@@ -4,7 +4,9 @@ package com.oxygenmobile.basketballhighlights.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class High {
+import java.io.Serializable;
+
+public class High implements Serializable {
 
     @SerializedName("url")
     @Expose

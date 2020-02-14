@@ -24,10 +24,9 @@ public class HighlightsDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_highlights_detail);
 
         final Intent intent = getIntent();
-        final PlayListAPI highlightsDetail = (PlayListAPI) intent.getSerializableExtra(getString(R.string.intentHighlightsDetail));
-        final List<Item> highlightsDetailItems = Objects.requireNonNull(highlightsDetail).getItems();
+        final List<Item> highlightsDetail = (List<Item>) intent.getSerializableExtra(getString(R.string.intentHighlightsDetail));
 
-        generateRecyclerViewPlayListDetail(highlightsDetailItems);
+        generateRecyclerViewPlayListDetail(highlightsDetail);
     }
 
     private void generateRecyclerViewPlayListDetail(List<Item> items) {

@@ -4,7 +4,9 @@ package com.oxygenmobile.basketballhighlights.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Thumbnails {
+import java.io.Serializable;
+
+public class Thumbnails implements Serializable {
 
     @SerializedName("default")
     @Expose

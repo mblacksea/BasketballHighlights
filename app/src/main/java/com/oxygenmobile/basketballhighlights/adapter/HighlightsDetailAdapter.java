@@ -72,7 +72,7 @@ public class HighlightsDetailAdapter extends RecyclerView.Adapter<HighlightsDeta
 
         holder.itemView.setOnClickListener(v -> {
             Log.e("videoId", snippet.getResourceId().getVideoId() + "Title: " + snippet.getTitle());
-            navigateToYoutubeActivty(snippet.getResourceId().getVideoId());
+            navigateToYoutubeActivity(snippet.getResourceId().getVideoId());
         });
     }
 
@@ -81,9 +81,10 @@ public class HighlightsDetailAdapter extends RecyclerView.Adapter<HighlightsDeta
         return mDataset.size();
     }
 
-    private void navigateToYoutubeActivty(String videoId) {
+    private void navigateToYoutubeActivity(String videoId) {
         Intent toYoutubeActivity = new Intent(getContext(), YoutubeDisplayActivity.class);
         toYoutubeActivity.putExtra(getContext().getString(R.string.intentYoutubeDisplayVideoId), videoId);
+        toYoutubeActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getContext().startActivity(toYoutubeActivity);
     }
 }

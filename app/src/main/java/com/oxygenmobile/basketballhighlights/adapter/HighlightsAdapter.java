@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.oxygenmobile.basketballhighlights.R;
 import com.oxygenmobile.basketballhighlights.activity.HighlightsDetailActivity;
 import com.oxygenmobile.basketballhighlights.model.BasketballHighlightsUrl;
@@ -22,6 +23,7 @@ import com.oxygenmobile.basketballhighlights.retrofit.APIInterface;
 import com.oxygenmobile.basketballhighlights.utils.SessionOperation;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.List;
 
 import retrofit2.Call;
@@ -99,7 +101,9 @@ public class HighlightsAdapter extends RecyclerView.Adapter<HighlightsAdapter.Da
 
     private void navigateToHighlightsDetail(Response<PlayListAPI> response) {
         Intent toHighlightsDetail = new Intent(getContext(), HighlightsDetailActivity.class);
-        toHighlightsDetail.putExtra(getContext().getString(R.string.intentHighlightsDetail), response.body());
+        List<Item> items = response.body().getItems();
+        toHighlightsDetail.putExtra(getContext().getString(R.string.intentHighlightsDetail), (Serializable) items);
+        toHighlightsDetail.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getContext().startActivity(toHighlightsDetail);
     }
 

@@ -56,7 +56,7 @@ dependencies {
     //ProgressBar library.
     implementation 'com.aseem.versatileprogressbar:MultiProgressBar:1.1.0'
 
-    compile files('libs/YouTubeAndroidPlayerApi.jar')
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
 
 }
 
