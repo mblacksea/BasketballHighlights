@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,10 +33,12 @@ public class HighlightsDetailAdapter extends RecyclerView.Adapter<HighlightsDeta
 
     static class DataObjectHolder extends RecyclerView.ViewHolder {
         private ImageView playListDetailImageView;
+        private TextView textView;
 
         DataObjectHolder(View itemView) {
             super(itemView);
             playListDetailImageView = itemView.findViewById(R.id.playListDetailImageView);
+            //textView = itemView.findViewById(R.id.gameName);
         }
     }
 
@@ -64,11 +67,13 @@ public class HighlightsDetailAdapter extends RecyclerView.Adapter<HighlightsDeta
 
     @Override
     public void onBindViewHolder(@NonNull HighlightsDetailAdapter.DataObjectHolder holder, int position) {
-        final Snippet snippet = mDataset.get(position).getSnippet();
+        Snippet snippet = mDataset.get(position).getSnippet();
         Picasso.get()
                 .load(snippet.getThumbnails().getHigh().getUrl())
                 .fit()
                 .into(holder.playListDetailImageView);
+
+        //holder.textView.setText("mustafa");
 
         holder.itemView.setOnClickListener(v -> {
             Log.e("videoId", snippet.getResourceId().getVideoId() + "Title: " + snippet.getTitle());

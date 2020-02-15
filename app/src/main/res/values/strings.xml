@@ -15,4 +15,6 @@
     <string name="intentHighlightsDetail">highlightsDetail</string>
     <string name="intentYoutubeDisplayVideoId">youtubeDisplayVideoId</string>
 
+    <string name="youtubePlayerError">Error an occurred! Player cannot work!</string>
+
 </resources>
