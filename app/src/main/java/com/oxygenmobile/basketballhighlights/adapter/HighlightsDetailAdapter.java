@@ -68,10 +68,11 @@ public class HighlightsDetailAdapter extends RecyclerView.Adapter<HighlightsDeta
     @Override
     public void onBindViewHolder(@NonNull HighlightsDetailAdapter.DataObjectHolder holder, int position) {
         Snippet snippet = mDataset.get(position).getSnippet();
-        Picasso.get()
-                .load(snippet.getThumbnails().getHigh().getUrl())
+        String photoUrl = snippet.getThumbnails().getHigh() != null ? snippet.getThumbnails().getHigh().getUrl() : snippet.getThumbnails().getDefault().getUrl();
+        /*Picasso.get()
+                .load(photoUrl)
                 .fit()
-                .into(holder.playListDetailImageView);
+                .into(holder.playListDetailImageView);*/
 
         //holder.textView.setText("mustafa");
 
