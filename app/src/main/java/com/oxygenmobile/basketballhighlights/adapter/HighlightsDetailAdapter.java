@@ -33,12 +33,12 @@ public class HighlightsDetailAdapter extends RecyclerView.Adapter<HighlightsDeta
 
     static class DataObjectHolder extends RecyclerView.ViewHolder {
         private ImageView playListDetailImageView;
-        private TextView textView;
+        private TextView playListDetailTitle;
 
         DataObjectHolder(View itemView) {
             super(itemView);
             playListDetailImageView = itemView.findViewById(R.id.playListDetailImageView);
-            //textView = itemView.findViewById(R.id.gameName);
+            playListDetailTitle = itemView.findViewById(R.id.playListDetailTitle);
         }
     }
 
@@ -68,12 +68,13 @@ public class HighlightsDetailAdapter extends RecyclerView.Adapter<HighlightsDeta
     @Override
     public void onBindViewHolder(@NonNull HighlightsDetailAdapter.DataObjectHolder holder, int position) {
         Snippet snippet = mDataset.get(position).getSnippet();
-        String photoUrl = snippet.getThumbnails().getHigh() != null ? snippet.getThumbnails().getHigh().getUrl() : snippet.getThumbnails().getDefault().getUrl();
-        /*Picasso.get()
+        String photoUrl = snippet.getThumbnails().getMedium() != null ? snippet.getThumbnails().getMedium().getUrl() : snippet.getThumbnails().getDefault().getUrl();
+        Picasso.get()
                 .load(photoUrl)
                 .fit()
-                .into(holder.playListDetailImageView);*/
+                .into(holder.playListDetailImageView);
 
+        holder.playListDetailTitle.setText(snippet.getTitle());
         //holder.textView.setText("mustafa");
 
         holder.itemView.setOnClickListener(v -> {

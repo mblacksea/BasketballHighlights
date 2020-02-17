@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="16dp">
@@ -16,29 +17,33 @@
 
             <ImageView
                 android:id="@+id/playListDetailImageView"
-                android:src="@mipmap/ic_launcher"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginRight="16dp" />
+                android:layout_marginRight="16dp"
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
-                android:id="@+id/person_name"
-                android:text="mustafa"
+                android:id="@+id/playListDetailTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@+id/playListDetailImageView"
-                android:textSize="30sp" />
+                android:fontFamily="monospace"
+                android:text="mustafa"
+                android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/person_age"
-                android:text="karadeniz"
+            <ImageView
+                android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/person_name"
-                android:layout_toRightOf="@+id/playListDetailImageView" />
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/playListDetailTitle"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/playListDetailImageView"
+                app:srcCompat="@mipmap/playbutton" />
 
         </RelativeLayout>
 
