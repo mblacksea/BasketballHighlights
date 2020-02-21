@@ -31,14 +31,13 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.google.firebase:firebase-database:16.0.4'
     implementation 'com.google.firebase:firebase-core:16.0.4'
+    implementation 'com.google.firebase:firebase-ads:17.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
     //Splash library.
     implementation 'com.github.ViksaaSkool:AwesomeSplash:v1.0.0'
-    //Admob library.
-    implementation 'com.iamhabib:easy-ads:1.0.1'
     //Toast message library.
     implementation 'com.github.onurkagan:ktoast:1.0.3'
     //Butterknife library.
@@ -56,7 +55,8 @@ dependencies {
     //ProgressBar library.
     implementation 'com.aseem.versatileprogressbar:MultiProgressBar:1.1.0'
 
+    implementation 'com.android.support:multidex:1.0.3'
+
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
 
 }
-

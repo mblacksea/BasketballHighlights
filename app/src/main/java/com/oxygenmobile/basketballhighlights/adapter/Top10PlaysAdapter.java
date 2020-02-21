@@ -1,6 +1,7 @@
 package com.oxygenmobile.basketballhighlights.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.oxygenmobile.basketballhighlights.R;
+import com.oxygenmobile.basketballhighlights.activity.YoutubeDisplayActivity;
 import com.oxygenmobile.basketballhighlights.model.Item;
+import com.oxygenmobile.basketballhighlights.model.Snippet;
+import com.oxygenmobile.basketballhighlights.utils.NavigateUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -51,12 +55,18 @@ public class Top10PlaysAdapter extends RecyclerView.Adapter<Top10PlaysAdapter.Da
 
     @Override
     public void onBindViewHolder(@NonNull Top10PlaysAdapter.DataObjectHolder holder, int position) {
+        final Snippet snippet = mDataset.get(position).getSnippet();
         Picasso.get()
-                .load(mDataset.get(position).getSnippet().getThumbnails().getHigh().getUrl())
+                .load(snippet.getThumbnails().getHigh().getUrl() != null ? snippet.getThumbnails().getHigh().getUrl() : snippet.getThumbnails().getDefault().getUrl())
                 .fit()
                 .into(holder.top10PlaysImageView);
 
         holder.top10PlaysTitleTextView.setText(mDataset.get(position).getSnippet().getTitle());
+
+        holder.itemView.setOnClickListener(v -> {
+            Log.e("videoId", snippet.getResourceId().getVideoId() + "Title: " + snippet.getTitle());
+            NavigateUtils.navigateToActivity(getContext(), context.getString(R.string.intentYoutubeDisplayVideoId), snippet.getResourceId().getVideoId(), YoutubeDisplayActivity.class);
+        });
     }
 
     @Override

@@ -6,7 +6,6 @@
     <string name="toast_PlayListAPI_error">Error an occurred! Play List cannot be obtain!</string>
     <string name="toast_Top10PlaysAPI_error">Error an occurred! Top 10 Play List cannot be obtain!</string>
 
-
     <!--Button Text-->
     <string name="highlightsPlays">NBA Highlights</string>
     <string name="topTenPlays">NBA Top 10 Plays</string>
@@ -16,5 +15,8 @@
     <string name="intentYoutubeDisplayVideoId">youtubeDisplayVideoId</string>
 
     <string name="youtubePlayerError">Error an occurred! Player cannot work!</string>
+
+    <!--Admob Id-->
+    <string name="highlightsActivityInterstitialAd">ca-app-pub-7577190809228817/9345111943</string>
 
 </resources>

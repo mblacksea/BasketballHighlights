@@ -16,6 +16,7 @@ import com.oxygenmobile.basketballhighlights.R;
 import com.oxygenmobile.basketballhighlights.activity.YoutubeDisplayActivity;
 import com.oxygenmobile.basketballhighlights.model.Item;
 import com.oxygenmobile.basketballhighlights.model.Snippet;
+import com.oxygenmobile.basketballhighlights.utils.NavigateUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -79,19 +80,12 @@ public class HighlightsDetailAdapter extends RecyclerView.Adapter<HighlightsDeta
 
         holder.itemView.setOnClickListener(v -> {
             Log.e("videoId", snippet.getResourceId().getVideoId() + "Title: " + snippet.getTitle());
-            navigateToYoutubeActivity(snippet.getResourceId().getVideoId());
+            NavigateUtils.navigateToActivity(getContext(), context.getString(R.string.intentYoutubeDisplayVideoId), snippet.getResourceId().getVideoId(), YoutubeDisplayActivity.class);
         });
     }
 
     @Override
     public int getItemCount() {
         return mDataset.size();
-    }
-
-    private void navigateToYoutubeActivity(String videoId) {
-        Intent toYoutubeActivity = new Intent(getContext(), YoutubeDisplayActivity.class);
-        toYoutubeActivity.putExtra(getContext().getString(R.string.intentYoutubeDisplayVideoId), videoId);
-        toYoutubeActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        getContext().startActivity(toYoutubeActivity);
     }
 }
