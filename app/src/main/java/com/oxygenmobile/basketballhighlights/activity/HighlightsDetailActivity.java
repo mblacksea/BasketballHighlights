@@ -12,6 +12,7 @@ import com.oxygenmobile.basketballhighlights.adapter.HighlightsAdapter;
 import com.oxygenmobile.basketballhighlights.adapter.HighlightsDetailAdapter;
 import com.oxygenmobile.basketballhighlights.model.Item;
 import com.oxygenmobile.basketballhighlights.model.PlayListAPI;
+import com.oxygenmobile.basketballhighlights.utils.AdUtils;
 
 import java.util.List;
 import java.util.Objects;
@@ -22,6 +23,7 @@ public class HighlightsDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highlights_detail);
+        AdUtils.showBannerAd(findViewById(R.id.highlightsDetailAdview));
 
         final Intent intent = getIntent();
         final List<Item> highlightsDetail = (List<Item>) intent.getSerializableExtra(getString(R.string.intentHighlightsDetail));

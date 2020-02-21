@@ -16,6 +16,7 @@ import com.oxygenmobile.basketballhighlights.model.Item;
 import com.oxygenmobile.basketballhighlights.model.PlayListAPI;
 import com.oxygenmobile.basketballhighlights.retrofit.APIClient;
 import com.oxygenmobile.basketballhighlights.retrofit.APIInterface;
+import com.oxygenmobile.basketballhighlights.utils.AdUtils;
 import com.oxygenmobile.basketballhighlights.utils.SessionOperation;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class Top10PlaysActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top10_plays);
+        AdUtils.showInterstitialAd(getApplicationContext(), getString(R.string.top10playsActivityInterstitialAd));
 
         final BasketballHighlightsUrl basketballHighlightsUrl = SessionOperation.fetchFirebaseUrl(getApplicationContext());
         final String topPlayListApi = basketballHighlightsUrl.getTopPlayList();

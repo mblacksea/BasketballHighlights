@@ -18,5 +18,7 @@
 
     <!--Admob Id-->
     <string name="highlightsActivityInterstitialAd">ca-app-pub-7577190809228817/9345111943</string>
+    <string name="top10playsActivityInterstitialAd">ca-app-pub-7577190809228817/4752891123</string>
+    <string name="highlightsDetailActivityBannerAd">ca-app-pub-7577190809228817/5175122019</string>
 
 </resources>

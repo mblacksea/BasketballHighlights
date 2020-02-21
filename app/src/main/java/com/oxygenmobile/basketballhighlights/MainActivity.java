@@ -15,6 +15,7 @@ import butterknife.OnClick;
 
 
 public class MainActivity extends AppCompatActivity {
+
     @OnClick(R.id.highlightsPlays)
     void onHighlightsPlays() {
         NavigateUtils.navigateToActivityWithoutValue(getApplicationContext(), HighlightsActivity.class);
