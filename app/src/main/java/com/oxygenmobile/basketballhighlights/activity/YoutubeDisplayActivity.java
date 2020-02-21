@@ -2,6 +2,7 @@ package com.oxygenmobile.basketballhighlights.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Config;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
@@ -12,6 +13,7 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.onurkaganaldemir.ktoastlib.KToast;
 import com.oxygenmobile.basketballhighlights.R;
+import com.oxygenmobile.basketballhighlights.utils.AdUtils;
 import com.oxygenmobile.basketballhighlights.utils.Constants;
 
 import butterknife.BindView;
@@ -21,8 +23,7 @@ public class YoutubeDisplayActivity extends YouTubeBaseActivity implements
         YouTubePlayer.OnInitializedListener {
 
     private static final int RECOVERY_REQUEST = 1;
-    @BindView(R.id.youtube_view)
-    YouTubePlayerView mPlayerView;
+    private YouTubePlayerView mPlayerView;
     private String videoId;
 
     @Override
@@ -32,21 +33,19 @@ public class YoutubeDisplayActivity extends YouTubeBaseActivity implements
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        setContentView(R.layout.activity_youtube_display);
-        ButterKnife.bind(this);
-
         Intent intent = getIntent();
         videoId = intent.getStringExtra(getString(R.string.intentYoutubeDisplayVideoId));
+        setContentView(R.layout.activity_youtube_display);
+
+        mPlayerView = findViewById(R.id.youtube_view);
         mPlayerView.initialize(Constants.YOUTUBE_API_KEY, this);
 
     }
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
-        if (!wasRestored) {
-            youTubePlayer.loadVideo(videoId);
-            youTubePlayer.setFullscreen(true);
-        }
+        youTubePlayer.loadVideo(videoId);
+        youTubePlayer.setFullscreen(true);
     }
 
     @Override

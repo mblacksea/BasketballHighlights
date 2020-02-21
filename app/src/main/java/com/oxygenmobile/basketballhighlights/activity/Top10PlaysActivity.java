@@ -9,7 +9,6 @@ import android.view.Gravity;
 
 import com.onurkaganaldemir.ktoastlib.KToast;
 import com.oxygenmobile.basketballhighlights.R;
-import com.oxygenmobile.basketballhighlights.adapter.HighlightsAdapter;
 import com.oxygenmobile.basketballhighlights.adapter.Top10PlaysAdapter;
 import com.oxygenmobile.basketballhighlights.model.BasketballHighlightsUrl;
 import com.oxygenmobile.basketballhighlights.model.Item;
@@ -17,21 +16,29 @@ import com.oxygenmobile.basketballhighlights.model.PlayListAPI;
 import com.oxygenmobile.basketballhighlights.retrofit.APIClient;
 import com.oxygenmobile.basketballhighlights.retrofit.APIInterface;
 import com.oxygenmobile.basketballhighlights.utils.AdUtils;
+import com.oxygenmobile.basketballhighlights.utils.Constants;
 import com.oxygenmobile.basketballhighlights.utils.SessionOperation;
 
 import java.util.List;
 
+import id.arieridwan.lib.PageLoader;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Top10PlaysActivity extends AppCompatActivity {
 
+    private PageLoader pageLoader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_top10_plays);
+        pageLoader = findViewById(R.id.pageloader);
+        Constants.showProgressDialog(pageLoader);
+
         AdUtils.showInterstitialAd(getApplicationContext(), getString(R.string.top10playsActivityInterstitialAd));
+        AdUtils.showBannerAd(findViewById(R.id.topTenPlaysAdView));
 
         final BasketballHighlightsUrl basketballHighlightsUrl = SessionOperation.fetchFirebaseUrl(getApplicationContext());
         final String topPlayListApi = basketballHighlightsUrl.getTopPlayList();
@@ -57,6 +64,7 @@ public class Top10PlaysActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<PlayListAPI> call, Throwable t) {
                 KToast.errorToast(Top10PlaysActivity.this, getString(R.string.toast_Top10PlaysAPI_error), Gravity.BOTTOM, KToast.LENGTH_AUTO);
+                pageLoader.stopProgress();
             }
         });
     }
@@ -70,5 +78,7 @@ public class Top10PlaysActivity extends AppCompatActivity {
 
         final Top10PlaysAdapter top10PlaysAdapter = new Top10PlaysAdapter(getApplicationContext(), items);
         recyclerView.setAdapter(top10PlaysAdapter);
+
+        pageLoader.stopProgress();
     }
 }

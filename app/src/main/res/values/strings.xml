@@ -19,6 +19,11 @@
     <!--Admob Id-->
     <string name="highlightsActivityInterstitialAd">ca-app-pub-7577190809228817/9345111943</string>
     <string name="top10playsActivityInterstitialAd">ca-app-pub-7577190809228817/4752891123</string>
+    <string name="youtubeActivityInterstitialAd">ca-app-pub-7577190809228817/6908760109</string>
+    <string name="highlightsActivityBannerAd">ca-app-pub-7577190809228817/2394800029</string>
     <string name="highlightsDetailActivityBannerAd">ca-app-pub-7577190809228817/5175122019</string>
+    <string name="top10PlaysActivityBannerAd">ca-app-pub-7577190809228817/4112379832</string>
+
+    <string name="highlightsDetailTitle">Matches of the Day!</string>
 
 </resources>
