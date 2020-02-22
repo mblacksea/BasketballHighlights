@@ -24,6 +24,7 @@ import com.oxygenmobile.basketballhighlights.utils.SessionOperation;
 import com.squareup.picasso.Picasso;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -100,9 +101,16 @@ public class HighlightsAdapter extends RecyclerView.Adapter<HighlightsAdapter.Da
     }
 
     private void navigateToHighlightsDetail(Response<PlayListAPI> response) {
+        List<Item> filteredList = new ArrayList<>();
         Intent toHighlightsDetail = new Intent(getContext(), HighlightsDetailActivity.class);
         List<Item> items = response.body().getItems();
-        toHighlightsDetail.putExtra(getContext().getString(R.string.intentHighlightsDetail), (Serializable) items);
+        for (Item item : items) {
+            if (item.getSnippet().getThumbnails() != null) {
+                filteredList.add(item);
+            }
+        }
+
+        toHighlightsDetail.putExtra(getContext().getString(R.string.intentHighlightsDetail), (Serializable) filteredList);
         toHighlightsDetail.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         getContext().startActivity(toHighlightsDetail);
     }

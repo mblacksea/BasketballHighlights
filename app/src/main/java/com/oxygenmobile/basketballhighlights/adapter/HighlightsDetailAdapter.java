@@ -16,6 +16,7 @@ import com.oxygenmobile.basketballhighlights.R;
 import com.oxygenmobile.basketballhighlights.activity.YoutubeDisplayActivity;
 import com.oxygenmobile.basketballhighlights.model.Item;
 import com.oxygenmobile.basketballhighlights.model.Snippet;
+import com.oxygenmobile.basketballhighlights.model.Thumbnails;
 import com.oxygenmobile.basketballhighlights.utils.NavigateUtils;
 import com.squareup.picasso.Picasso;
 
@@ -69,19 +70,23 @@ public class HighlightsDetailAdapter extends RecyclerView.Adapter<HighlightsDeta
     @Override
     public void onBindViewHolder(@NonNull HighlightsDetailAdapter.DataObjectHolder holder, int position) {
         Snippet snippet = mDataset.get(position).getSnippet();
-        String photoUrl = snippet.getThumbnails().getMedium() != null ? snippet.getThumbnails().getMedium().getUrl() : snippet.getThumbnails().getDefault().getUrl();
-        Picasso.get()
-                .load(photoUrl)
-                .fit()
-                .into(holder.playListDetailImageView);
+        Thumbnails thumbnails = snippet.getThumbnails();
+        if (thumbnails != null) {
+            String photoUrl = thumbnails.getMedium() != null ? thumbnails.getMedium().getUrl() : thumbnails.getDefault().getUrl();
+            Picasso.get()
+                    .load(photoUrl)
+                    .fit()
+                    .into(holder.playListDetailImageView);
 
-        holder.playListDetailTitle.setText(snippet.getTitle());
-        //holder.textView.setText("mustafa");
+            holder.playListDetailTitle.setText(snippet.getTitle());
+            //holder.textView.setText("mustafa");
 
-        holder.itemView.setOnClickListener(v -> {
-            Log.e("videoId", snippet.getResourceId().getVideoId() + "Title: " + snippet.getTitle());
-            NavigateUtils.navigateToActivity(getContext(), context.getString(R.string.intentYoutubeDisplayVideoId), snippet.getResourceId().getVideoId(), YoutubeDisplayActivity.class);
-        });
+            holder.itemView.setOnClickListener(v -> {
+                Log.e("videoId", snippet.getResourceId().getVideoId() + "Title: " + snippet.getTitle());
+                NavigateUtils.navigateToActivity(getContext(), context.getString(R.string.intentYoutubeDisplayVideoId), snippet.getResourceId().getVideoId(), YoutubeDisplayActivity.class);
+            });
+        }
+
     }
 
     @Override
