@@ -2,7 +2,6 @@ package com.oxygenmobile.basketballhighlights.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Config;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
@@ -16,8 +15,6 @@ import com.oxygenmobile.basketballhighlights.R;
 import com.oxygenmobile.basketballhighlights.utils.AdUtils;
 import com.oxygenmobile.basketballhighlights.utils.Constants;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class YoutubeDisplayActivity extends YouTubeBaseActivity implements
         YouTubePlayer.OnInitializedListener {
@@ -46,6 +43,7 @@ public class YoutubeDisplayActivity extends YouTubeBaseActivity implements
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
         youTubePlayer.loadVideo(videoId);
         youTubePlayer.setFullscreen(true);
+        AdUtils.showInterstitialAd(getApplicationContext(), getString(R.string.youtubeActivityInterstitialAd));
     }
 
     @Override

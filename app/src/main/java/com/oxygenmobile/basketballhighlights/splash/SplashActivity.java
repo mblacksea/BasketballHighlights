@@ -11,6 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.onurkaganaldemir.ktoastlib.KToast;
 import com.oxygenmobile.basketballhighlights.R;
+import com.oxygenmobile.basketballhighlights.activity.HighlightsActivity;
 import com.oxygenmobile.basketballhighlights.model.BasketballHighlightsUrl;
 
 import android.content.Intent;
@@ -18,11 +19,21 @@ import android.util.Log;
 import android.view.Gravity;
 
 import com.oxygenmobile.basketballhighlights.MainActivity;
+import com.oxygenmobile.basketballhighlights.model.Item;
+import com.oxygenmobile.basketballhighlights.model.PlayListAPI;
+import com.oxygenmobile.basketballhighlights.retrofit.APIClient;
+import com.oxygenmobile.basketballhighlights.retrofit.APIInterface;
 import com.oxygenmobile.basketballhighlights.utils.Constants;
 import com.oxygenmobile.basketballhighlights.utils.SessionOperation;
 import com.viksaa.sssplash.lib.activity.AwesomeSplash;
 import com.viksaa.sssplash.lib.cnst.Flags;
 import com.viksaa.sssplash.lib.model.ConfigSplash;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class SplashActivity extends AwesomeSplash {
@@ -79,14 +90,33 @@ public class SplashActivity extends AwesomeSplash {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final BasketballHighlightsUrl basketballHighlightsUrl = dataSnapshot.getValue(BasketballHighlightsUrl.class);
                 SessionOperation.saveFirabaseUrl(getApplicationContext(), basketballHighlightsUrl);
-                navigateToMainActivity();
+                fetchHightlightsItems(basketballHighlightsUrl != null ? basketballHighlightsUrl.getPlayListApi() : null);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.e(TAG, "The read data failed from Firebase" + databaseError.getCode() + " " + databaseError.getMessage() + " " + databaseError.getDetails());
                 KToast.warningToast(SplashActivity.this, getString(R.string.toast_firebase_error), Gravity.BOTTOM, KToast.LENGTH_AUTO);
+            }
+        });
+    }
 
+    private void fetchHightlightsItems(String playListApi) {
+        final APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
+
+        final Call<PlayListAPI> playListCall = apiInterface.inquireNbaAllHighlightsPlayList(playListApi);
+        playListCall.enqueue(new Callback<PlayListAPI>() {
+            @Override
+            public void onResponse(Call<PlayListAPI> call, Response<PlayListAPI> response) {
+                final PlayListAPI body = response.body();
+                final List<Item> items = body.getItems();
+                SessionOperation.saveHighlights(getApplicationContext(), items);
+                navigateToMainActivity();
+            }
+
+            @Override
+            public void onFailure(Call<PlayListAPI> call, Throwable t) {
+                KToast.errorToast(SplashActivity.this, getString(R.string.toast_PlayListAPI_error), Gravity.BOTTOM, KToast.LENGTH_AUTO);
             }
         });
     }
