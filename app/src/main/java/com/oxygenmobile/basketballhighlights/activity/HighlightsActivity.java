@@ -40,7 +40,17 @@ public class HighlightsActivity extends AppCompatActivity {
         final BasketballHighlightsUrl basketballHighlightsUrl = SessionOperation.fetchFirebaseUrl(getApplicationContext());
         final String playListApi = basketballHighlightsUrl.getPlayListApi();
 
-        this.fetchHightlightsItemsForRecyclerView(playListApi);
+        generateHighlights(playListApi);
+    }
+
+    private void generateHighlights(String playListApi) {
+        final List<Item> highlights = SessionOperation.fetchHighlights(getApplicationContext());
+
+        if (highlights.isEmpty()) {
+            this.fetchHightlightsItemsForRecyclerView(playListApi);
+        } else {
+            this.generateRecyclerViewPlayList(highlights);
+        }
     }
 
     private void fetchHightlightsItemsForRecyclerView(String playListApi) {
@@ -52,6 +62,7 @@ public class HighlightsActivity extends AppCompatActivity {
             public void onResponse(Call<PlayListAPI> call, Response<PlayListAPI> response) {
                 final PlayListAPI body = response.body();
                 final List<Item> items = body.getItems();
+                SessionOperation.saveHighlights(getApplicationContext(), items);
 
                 generateRecyclerViewPlayList(items);
 
