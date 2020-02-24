@@ -64,7 +64,7 @@ public class Top10PlaysAdapter extends RecyclerView.Adapter<Top10PlaysAdapter.Da
         holder.top10PlaysTitleTextView.setText(mDataset.get(position).getSnippet().getTitle());
 
         holder.itemView.setOnClickListener(v -> {
-            Log.e("videoId", snippet.getResourceId().getVideoId() + "Title: " + snippet.getTitle());
+            Log.e(TAG, "VideoId: " + snippet.getResourceId().getVideoId() + "Title: " + snippet.getTitle());
             NavigateUtils.navigateToActivity(getContext(), context.getString(R.string.intentYoutubeDisplayVideoId), snippet.getResourceId().getVideoId(), YoutubeDisplayActivity.class);
         });
     }

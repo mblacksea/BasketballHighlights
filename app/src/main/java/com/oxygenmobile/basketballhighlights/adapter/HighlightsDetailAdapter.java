@@ -1,7 +1,6 @@
 package com.oxygenmobile.basketballhighlights.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,10 +78,9 @@ public class HighlightsDetailAdapter extends RecyclerView.Adapter<HighlightsDeta
                     .into(holder.playListDetailImageView);
 
             holder.playListDetailTitle.setText(snippet.getTitle());
-            //holder.textView.setText("mustafa");
 
             holder.itemView.setOnClickListener(v -> {
-                Log.e("videoId", snippet.getResourceId().getVideoId() + "Title: " + snippet.getTitle());
+                Log.e(TAG, "VideoId:" + snippet.getResourceId().getVideoId() + "Title: " + snippet.getTitle());
                 NavigateUtils.navigateToActivity(getContext(), context.getString(R.string.intentYoutubeDisplayVideoId), snippet.getResourceId().getVideoId(), YoutubeDisplayActivity.class);
             });
         }

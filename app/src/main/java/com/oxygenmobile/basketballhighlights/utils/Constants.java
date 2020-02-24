@@ -1,7 +1,5 @@
 package com.oxygenmobile.basketballhighlights.utils;
 
-import com.oxygenmobile.basketballhighlights.R;
-
 import id.arieridwan.lib.PageLoader;
 
 public final class Constants {

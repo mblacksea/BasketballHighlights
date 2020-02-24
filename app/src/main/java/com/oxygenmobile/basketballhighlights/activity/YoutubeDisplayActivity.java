@@ -12,7 +12,6 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.onurkaganaldemir.ktoastlib.KToast;
 import com.oxygenmobile.basketballhighlights.R;
-import com.oxygenmobile.basketballhighlights.utils.AdUtils;
 import com.oxygenmobile.basketballhighlights.utils.Constants;
 
 
@@ -20,7 +19,6 @@ public class YoutubeDisplayActivity extends YouTubeBaseActivity implements
         YouTubePlayer.OnInitializedListener {
 
     private static final int RECOVERY_REQUEST = 1;
-    private YouTubePlayerView mPlayerView;
     private String videoId;
 
     @Override
@@ -34,7 +32,7 @@ public class YoutubeDisplayActivity extends YouTubeBaseActivity implements
         videoId = intent.getStringExtra(getString(R.string.intentYoutubeDisplayVideoId));
         setContentView(R.layout.activity_youtube_display);
 
-        mPlayerView = findViewById(R.id.youtube_view);
+        YouTubePlayerView mPlayerView = findViewById(R.id.youtube_view);
         mPlayerView.initialize(Constants.YOUTUBE_API_KEY, this);
 
     }

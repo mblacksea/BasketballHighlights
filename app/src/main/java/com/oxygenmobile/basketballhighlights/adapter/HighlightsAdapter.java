@@ -2,7 +2,6 @@ package com.oxygenmobile.basketballhighlights.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.gson.Gson;
 import com.oxygenmobile.basketballhighlights.R;
 import com.oxygenmobile.basketballhighlights.activity.HighlightsDetailActivity;
 import com.oxygenmobile.basketballhighlights.model.BasketballHighlightsUrl;

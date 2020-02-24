@@ -11,7 +11,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.onurkaganaldemir.ktoastlib.KToast;
 import com.oxygenmobile.basketballhighlights.R;
-import com.oxygenmobile.basketballhighlights.activity.HighlightsActivity;
 import com.oxygenmobile.basketballhighlights.model.BasketballHighlightsUrl;
 
 import android.content.Intent;
