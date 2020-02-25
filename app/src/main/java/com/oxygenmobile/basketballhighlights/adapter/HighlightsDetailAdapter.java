@@ -16,6 +16,7 @@ import com.oxygenmobile.basketballhighlights.activity.YoutubeDisplayActivity;
 import com.oxygenmobile.basketballhighlights.model.Item;
 import com.oxygenmobile.basketballhighlights.model.Snippet;
 import com.oxygenmobile.basketballhighlights.model.Thumbnails;
+import com.oxygenmobile.basketballhighlights.utils.CircleTransform;
 import com.oxygenmobile.basketballhighlights.utils.NavigateUtils;
 import com.squareup.picasso.Picasso;
 
@@ -74,6 +75,7 @@ public class HighlightsDetailAdapter extends RecyclerView.Adapter<HighlightsDeta
             String photoUrl = thumbnails.getMedium() != null ? thumbnails.getMedium().getUrl() : thumbnails.getDefault().getUrl();
             Picasso.get()
                     .load(photoUrl)
+                    .transform(new CircleTransform())
                     .fit()
                     .into(holder.playListDetailImageView);
 
