@@ -5,6 +5,7 @@ public class BasketballHighlightsUrl {
     private String playListApi;
     private String playListVideo;
     private String topPlayList;
+    private String shaqtinAFool;
 
     public BasketballHighlightsUrl() {
     }
@@ -37,5 +38,13 @@ public class BasketballHighlightsUrl {
 
     public void setTopPlayList(String topPlayList) {
         this.topPlayList = topPlayList;
+    }
+
+    public String getShaqtinAFool() {
+        return shaqtinAFool;
+    }
+
+    public void setShaqtinAFool(String shaqtinAFool) {
+        this.shaqtinAFool = shaqtinAFool;
     }
 }

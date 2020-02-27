@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.oxygenmobile.basketballhighlights.activity.HighlightsActivity;
+import com.oxygenmobile.basketballhighlights.activity.ShaqtinAFoolActivity;
 import com.oxygenmobile.basketballhighlights.activity.Top10PlaysActivity;
 import com.oxygenmobile.basketballhighlights.utils.NavigateUtils;
 
@@ -21,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.topTenPlays)
     void onTopTenPlays() {
         NavigateUtils.navigateToActivityWithoutValue(getApplicationContext(), Top10PlaysActivity.class);
+    }
+
+    @OnClick(R.id.shaqtinAFool)
+    void onShaqtinAFool() {
+        NavigateUtils.navigateToActivityWithoutValue(getApplicationContext(), ShaqtinAFoolActivity.class);
     }
 
     @Override

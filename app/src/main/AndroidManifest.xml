@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".activity.YoutubeDisplayActivity"></activity>
+        <activity android:name=".activity.ShaqtinAFoolActivity"></activity>
+        <activity android:name=".activity.YoutubeDisplayActivity" />
         <activity android:name=".activity.HighlightsDetailActivity" />
         <activity android:name=".activity.Top10PlaysActivity" />
         <activity android:name=".activity.HighlightsActivity" />
@@ -31,7 +32,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-7577190809228817~4583739857"/>
+            android:value="ca-app-pub-7577190809228817~4583739857" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
