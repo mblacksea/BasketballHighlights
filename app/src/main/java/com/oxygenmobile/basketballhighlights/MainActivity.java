@@ -7,6 +7,7 @@ import android.os.Bundle;
 import com.oxygenmobile.basketballhighlights.activity.HighlightsActivity;
 import com.oxygenmobile.basketballhighlights.activity.ShaqtinAFoolActivity;
 import com.oxygenmobile.basketballhighlights.activity.Top10PlaysActivity;
+import com.oxygenmobile.basketballhighlights.utils.AdUtils;
 import com.oxygenmobile.basketballhighlights.utils.NavigateUtils;
 
 import butterknife.ButterKnife;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        AdUtils.showBannerAd(findViewById(R.id.mainActivityAdView));
     }
 
 }

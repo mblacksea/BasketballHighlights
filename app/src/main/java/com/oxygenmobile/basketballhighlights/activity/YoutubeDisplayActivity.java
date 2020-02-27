@@ -39,10 +39,10 @@ public class YoutubeDisplayActivity extends YouTubeBaseActivity implements
 
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean wasRestored) {
-        if (!wasRestored) {
-            youTubePlayer.loadVideo(videoId);
-            youTubePlayer.setFullscreen(true);
-        }
+
+        youTubePlayer.loadVideo(videoId);
+        youTubePlayer.setFullscreen(true);
+
     }
 
     @Override

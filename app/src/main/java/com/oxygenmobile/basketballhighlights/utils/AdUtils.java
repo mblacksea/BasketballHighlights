@@ -29,8 +29,6 @@ public final class AdUtils {
     }
 
     private static AdRequest generateAdRequest() {
-        return new AdRequest.Builder()
-                .addTestDevice("E034CB11F373623302D57C04E8A68BE4")
-                .build();
+        return new AdRequest.Builder().build();
     }
 }

@@ -12,12 +12,14 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".activity.ShaqtinAFoolActivity"></activity>
-        <activity android:name=".activity.YoutubeDisplayActivity" />
+        <activity android:name=".activity.ShaqtinAFoolActivity" />
+        <activity
+            android:name=".activity.YoutubeDisplayActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".activity.HighlightsDetailActivity" />
         <activity android:name=".activity.Top10PlaysActivity" />
         <activity android:name=".activity.HighlightsActivity" />
