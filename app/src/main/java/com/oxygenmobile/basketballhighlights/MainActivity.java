@@ -100,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements RatingDialogListe
     private String findUniqueUserId() {
         return Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID);
+        
     }
 
     private void rateMe() {
