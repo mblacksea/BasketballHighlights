@@ -13,8 +13,8 @@ android {
         applicationId "com.oxygenmobile.basketballhighlights"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -36,6 +36,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
+    //App rating library
+    implementation 'com.stepstone.apprating:app-rating:2.3.1'
     //Splash library.
     implementation 'com.github.ViksaaSkool:AwesomeSplash:v1.0.0'
     //Toast message library.

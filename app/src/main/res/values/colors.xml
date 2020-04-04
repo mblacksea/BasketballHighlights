@@ -2,9 +2,16 @@
 <resources>
     <color name="colorPrimary">#283593</color>
     <color name="colorPrimaryDark">#1a237e</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="backgroundColor">#D81B60</color>
 
 
     <color name="splashBackground">#1565c0</color>
+    <color name="starColor">#FFA000</color>
+    <color name="noteDescriptionTextColor">#45b9ad</color>
+    <color name="titleTextColor">#FFFFFF</color>
+    <color name="descriptionTextColor">#A6FFFFFF</color>
+    <color name="commentTextColor">#FFFFFF</color>
+    <color name="hintTextColor">#FFFFFF</color>
 </resources>
