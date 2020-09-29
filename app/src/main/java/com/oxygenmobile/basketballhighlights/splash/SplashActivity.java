@@ -103,9 +103,13 @@ public class SplashActivity extends AwesomeSplash {
             @Override
             public void onResponse(Call<PlayListAPI> call, Response<PlayListAPI> response) {
                 final PlayListAPI body = response.body();
-                final List<Item> items = body.getItems();
-                SessionOperation.saveHighlights(getApplicationContext(), items);
-                navigateToMainActivity();
+                if (body == null) {
+                    fetchHightlightsItems(playListApi);
+                } else {
+                    final List<Item> items = body.getItems();
+                    SessionOperation.saveHighlights(getApplicationContext(), items);
+                    navigateToMainActivity();
+                }
             }
 
             @Override

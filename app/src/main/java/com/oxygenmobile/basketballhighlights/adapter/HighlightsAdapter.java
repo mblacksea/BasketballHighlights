@@ -13,11 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.oxygenmobile.basketballhighlights.R;
 import com.oxygenmobile.basketballhighlights.activity.HighlightsDetailActivity;
+import com.oxygenmobile.basketballhighlights.activity.YoutubeDisplayActivity;
 import com.oxygenmobile.basketballhighlights.model.BasketballHighlightsUrl;
 import com.oxygenmobile.basketballhighlights.model.Item;
 import com.oxygenmobile.basketballhighlights.model.PlayListAPI;
+import com.oxygenmobile.basketballhighlights.model.Snippet;
 import com.oxygenmobile.basketballhighlights.retrofit.APIClient;
 import com.oxygenmobile.basketballhighlights.retrofit.APIInterface;
+import com.oxygenmobile.basketballhighlights.utils.NavigateUtils;
 import com.oxygenmobile.basketballhighlights.utils.SessionOperation;
 import com.squareup.picasso.Picasso;
 
@@ -68,12 +71,18 @@ public class HighlightsAdapter extends RecyclerView.Adapter<HighlightsAdapter.Da
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, final int position) {
+        Snippet snippet = mDataset.get(position).getSnippet();
         Picasso.get()
-                .load(mDataset.get(position).getSnippet().getThumbnails().getHigh().getUrl())
+                .load(snippet.getThumbnails().getHigh().getUrl())
                 .fit()
                 .into(holder.playListImageView);
 
-        holder.playListImageView.setOnClickListener(view -> {
+        holder.itemView.setOnClickListener(v -> {
+            Log.e(TAG, "VideoId: " + snippet.getResourceId().getVideoId() + "Title: " + snippet.getTitle());
+            NavigateUtils.navigateToActivity(getContext(), context.getString(R.string.intentYoutubeDisplayVideoId), snippet.getResourceId().getVideoId(), YoutubeDisplayActivity.class);
+        });
+
+        /*holder.playListImageView.setOnClickListener(view -> {
             final BasketballHighlightsUrl basketballHighlightsUrl = SessionOperation.fetchFirebaseUrl(getContext());
             final String playListVideoUrl = basketballHighlightsUrl.getPlayListVideo();
 
@@ -90,7 +99,7 @@ public class HighlightsAdapter extends RecyclerView.Adapter<HighlightsAdapter.Da
                     Log.e(TAG, getContext().getString(R.string.toast_PlayListAPI_error) + t.getMessage() + " " + t.getLocalizedMessage());
                 }
             });
-        });
+        });*/
     }
 
     @Override
